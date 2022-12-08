@@ -1,2 +1,3 @@
 **Kiểm tra có các package  nào được cài đặt**
+**This is bold text**	
 rpm -q telnet ansible python3 openssh-server
