@@ -13,3 +13,7 @@ sudo yum remove -y ansible
 
 
  systemctl cat app.service
+
+ ---
+ docker exec -it a sh -c 'gosu oracle sqlplus "sys as sysdba"'
+docker exec -it oracle-12cR1-ee sh -c 'gosu oracle impdp "<username>/<password>@<connection_string>"'
