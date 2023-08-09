@@ -131,3 +131,32 @@ sudo lvextend -l +100%FREE /dev/centos/root
 sudo xfs_growfs /dev/centos/root
 ```
 
+
+---
+Fix lỗi Oracle
+
+```
+alter session set "_ORACLE_SCRIPT"=true;
+CREATE USER VNLIS_DEV IDENTIFIED BY vnlis#125; 
+GRANT CONNECT TO VNLIS_DEV; 
+GRANT CONNECT, RESOURCE, DBA TO VNLIS_DEV; 
+GRANT UNLIMITED TABLESPACE TO VNLIS_DEV;
+
+select * from dba_datapump_jobs;
+
+select * from dba_resumable;
+
+select value from v$parameter where name = 'db_block_size';
+ SELECT * FROM DBA_DATA_FILES;
+ 
+  ALTER DATABASE DATAFILE '/u01/app/oracle/oradata/orcl/users01.dbf' RESIZE 40359214080M; 
+
+ 
+ SELECT name, free_mb, total_mb, free_mb/total_mb*100 as percentage 
+     FROM v$asm_diskgroup;
+     
+    alter tablespace users add datafile '/u01/app/oracle/oradata/orcl/users03.dbf' size 2000m autoextend on next 2000m;
+    
+   ALTER TABLESPACE USERS ADD DATAFILE 
+'+DATA/ORCLDB/EC791B3B3E64B1B4E0531004A80ABA24/temp09.dbf'  SIZE 32767M  REUSE;
+```
