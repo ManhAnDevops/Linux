@@ -107,23 +107,27 @@ Chúc mừng! Bạn đã cài đặt và cấu hình thành công Prometheus tr�
 
 --- 
 Cách resize size disk
+```
 sudo parted /dev/sdb resizepart 1 100%
 sudo resize2fs /dev/sdb1
-
+```
 cách  thư mục disk
-
+```
 sudo lvdisplay /dev/mapper/centos-home
+```
 Nếu không có bất kỳ LV nào đang sử dụng phân vùng này, bạn có thể tiến hành xóa.
 
 Xóa Logical Volume (LV): Nếu bạn đã xác nhận rằng không có dữ liệu quan trọng trên phân vùng này, bạn có thể xóa LV tương ứng bằng lệnh sau:
+```
 sudo lvremove /dev/mapper/centos-home
 
 sudo vgscan
 sudo vgchange -ay
-
+```
 ---
 Add thêm dung lượng thừa
+```
 sudo lvextend -l +100%FREE /dev/centos/root
 sudo xfs_growfs /dev/centos/root
-
+```
 
