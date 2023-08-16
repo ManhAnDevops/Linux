@@ -129,6 +129,9 @@ Add thêm dung lượng thừa
 ```
 sudo lvextend -l +100%FREE /dev/centos/root
 sudo xfs_growfs /dev/centos/root
+Nếu hệ thống tệp là ext4:
+sudo resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv
+
 ```
 
 
